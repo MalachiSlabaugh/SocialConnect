@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialConnect - Your Social Media Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <h1>SocialConnect</h1>
+        </div>
+        <div class="nav-middle">
+            <div class="search-box">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="search-results" style="display: none;">
+                <!-- Search results will be dynamically added here -->
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-icons">
+                <i class="fas fa-home"></i>
+                <i class="fas fa-user"></i>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-envelope"></i>
+                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <div class="profile-card">
+                <img src="https://via.placeholder.com/100" alt="Profile" class="profile-pic-large">
+                <h2>Your Name</h2>
+                <p>@username</p>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="number">0</span>
+                        <span class="label">Followers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">0</span>
+                        <span class="label">Following</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">0</span>
+                        <span class="label">Posts</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="menu-item" data-page="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+                <div class="menu-item" data-page="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </div>
+                <div class="menu-item" data-page="messages">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                </div>
+                <div class="menu-item" data-page="videos">
+                    <i class="fas fa-video"></i>
+                    <span>Videos</span>
+                </div>
+                <div class="menu-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Home Feed -->
+            <div class="page-content" id="home-page">
+                <div class="main-feed">
+                    <!-- Create Post -->
+                    <div class="create-post">
+                        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                        <div class="post-input-container">
+                            <input type="text" placeholder="What's on your mind?">
+                            <div class="post-actions">
+                                <label class="photo-upload-btn">
+                                    <i class="fas fa-image"></i>
+                                    <input type="file" accept="image/*" style="display: none;">
+                                </label>
+                                <label class="video-upload-btn">
+                                    <i class="fas fa-video"></i>
+                                    <input type="file" accept="video/*" style="display: none;">
+                                </label>
+                                <button class="emoji-btn">😊</button>
+                                <button class="post-btn" type="button">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span>Post</span>
+                                </button>
+                            </div>
+                            <div class="photo-preview" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <!-- Posts will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Notifications Page -->
+            <div class="page-content" id="notifications-page" style="display: none;">
+                <div class="notifications-header">
+                    <h2>Notifications</h2>
+                    <div class="notification-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="likes">Likes</button>
+                        <button class="filter-btn" data-filter="comments">Comments</button>
+                        <button class="filter-btn" data-filter="follows">Follows</button>
+                    </div>
+                </div>
+                <div class="notifications-list">
+                    <!-- Empty state for notifications -->
+                    <div class="notification-item" data-type="empty">
+                        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                        <div class="notification-content">
+                            <p>No notifications yet</p>
+                            <span class="notification-time">When someone interacts with your posts, you'll see it here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Page -->
+            <div class="page-content" id="messages-page" style="display: none;">
+                <div class="messages-container">
+                    <!-- Messages Sidebar -->
+                    <div class="messages-sidebar">
+                        <div class="messages-header">
+                            <h2>Messages</h2>
+                            <button class="new-message-btn">
+                                <i class="fas fa-plus"></i> New Message
+                            </button>
+                        </div>
+                        <div class="messages-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search messages">
+                        </div>
+                        <div class="conversations-list">
+                            <div class="empty-state">
+                                <i class="fas fa-comments"></i>
+                                <h3>No Messages Yet</h3>
+                                <p>Start a conversation to see your messages here</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <div class="chat-user-info">
+                                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                                <div>
+                                    <h3>Select a conversation</h3>
+                                    <span class="status">Start messaging to connect</span>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <i class="fas fa-phone"></i>
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                        <div class="messages-list">
+                            <div class="empty-state">
+                                <i class="fas fa-comments"></i>
+                                <h3>Welcome to Messages</h3>
+                                <p>Start a new conversation to begin messaging</p>
+                            </div>
+                        </div>
+                        <div class="message-input">
+                            <i class="fas fa-paperclip"></i>
+                            <input type="text" placeholder="Type a message...">
+                            <button class="send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings-page" class="page-content" style="display: none;">
+                <div class="settings-container">
+                    <div class="settings-header">
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Appearance</h3>
+                        <div class="settings-item">
+                            <div class="settings-info">
+                                <h4>Theme</h4>
+                                <p>Choose between light and dark mode</p>
+                            </div>
+                            <div class="theme-switch">
+                                <button class="theme-btn active" data-theme="light">
+                                    <i class="fas fa-sun"></i>
+                                </button>
+                                <button class="theme-btn" data-theme="dark">
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Account Settings</h3>
+                        <div class="settings-item">
+                            <div class="settings-info">
+                                <h4>Profile Privacy</h4>
+                                <p>Control who can see your profile</p>
+                            </div>
+                            <select class="settings-select">
+                                <option>Public</option>
+                                <option>Friends Only</option>
+                                <option>Private</option>
+                            </select>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-info">
+                                <h4>Email Notifications</h4>
+                                <p>Manage your email notification preferences</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Results Page -->
+            <div id="search-results-page" class="page-content" style="display: none;">
+                <div class="search-results-container">
+                    <div class="search-header">
+                        <h2>Search Results</h2>
+                        <div class="search-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="people">People</button>
+                            <button class="filter-btn" data-filter="posts">Posts</button>
+                        </div>
+                    </div>
+                    <div class="search-results-list">
+                        <!-- Results will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="page-content" style="display: none;">
+                <div class="profile-header">
+                    <div class="profile-cover">
+                        <img src="https://source.unsplash.com/random/1200x300?nature" alt="Cover Photo">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-picture-large">
+                            <img src="https://source.unsplash.com/random/150x150?portrait" alt="Profile Picture">
+                            <button class="edit-profile-btn" id="editProfileBtn">
+                                <i class="fas fa-camera"></i> Edit Profile
+                            </button>
+                        </div>
+                        <div class="profile-details">
+                            <h1>John Doe</h1>
+                            <div class="username">@johndoe</div>
+                            <div class="bio">Software Developer | Coffee Lover | Tech Enthusiast</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Profile Modal -->
+                <div id="editProfileModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Edit Profile</h2>
+                            <button class="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editProfileForm">
+                                <div class="form-group">
+                                    <label for="profileName">Name</label>
+                                    <input type="text" id="profileName" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileUsername">Username</label>
+                                    <input type="text" id="profileUsername" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileBio">Bio</label>
+                                    <textarea id="profileBio" name="bio" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profilePicture">Profile Picture</label>
+                                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                                </div>
+                                <div class="form-group">
+                                    <label for="coverPhoto">Cover Photo</label>
+                                    <input type="file" id="coverPhoto" name="coverPhoto" accept="image/*">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="posts">Posts</button>
+                    <button class="tab-btn" data-tab="about">About</button>
+                    <button class="tab-btn" data-tab="friends">Friends</button>
+                    <button class="tab-btn" data-tab="photos">Photos</button>
+                </div>
+                <div class="profile-content">
+                    <div class="tab-content active" id="posts-tab">
+                        <!-- Create Post Box -->
+                        <div class="create-post">
+                            <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                            <div class="post-input-container">
+                                <input type="text" placeholder="What's on your mind?">
+                                <div class="post-actions">
+                                    <label class="photo-upload-btn">
+                                        <i class="fas fa-image"></i>
+                                        <input type="file" accept="image/*" style="display: none;">
+                                    </label>
+                                    <label class="video-upload-btn">
+                                        <i class="fas fa-video"></i>
+                                        <input type="file" accept="video/*" style="display: none;">
+                                    </label>
+                                    <button class="emoji-btn">😊</button>
+                                    <button class="post-btn" type="button">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Post</span>
+                                    </button>
+                                </div>
+                                <div class="photo-preview" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <!-- User's posts will be dynamically added here -->
+                    </div>
+                    <div class="tab-content" id="about-tab">
+                        <div class="about-section">
+                            <div class="about-header">
+                                <h2>About</h2>
+                                <button class="edit-about-btn" id="editAboutBtn">
+                                    <i class="fas fa-edit"></i> Edit About
+                                </button>
+                            </div>
+                            <div class="about-info">
+                                <div class="info-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span id="workplace">Works at: Your Company</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span id="education">Studied at: Your University</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-home"></i>
+                                    <span id="location">Lives in: Your City</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edit About Modal -->
+                    <div id="editAboutModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Edit About Information</h2>
+                                <button class="close-modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editAboutForm">
+                                    <div class="form-group">
+                                        <label for="workplaceInput">Workplace</label>
+                                        <input type="text" id="workplaceInput" name="workplace" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="educationInput">Education</label>
+                                        <input type="text" id="educationInput" name="education" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="locationInput">Location</label>
+                                        <input type="text" id="locationInput" name="location" required>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="cancel-btn">Cancel</button>
+                                        <button type="submit" class="save-btn">Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="friends-tab">
+                        <div class="friends-section">
+                            <h2>Friends</h2>
+                            <p>No friends yet. Start connecting with people!</p>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="photos-tab">
+                        <div class="photos-section">
+                            <div class="photos-header">
+                                <h2>Photos</h2>
+                                <button class="upload-photo-btn" id="uploadPhotoBtn">
+                                    <i class="fas fa-upload"></i> Upload Photo
+                                </button>
+                            </div>
+                            <div class="photos-grid" id="photosGrid">
+                                <!-- Photos will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upload Photo Modal -->
+                    <div id="uploadPhotoModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Upload Photo</h2>
+                                <button class="close-modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="uploadPhotoForm">
+                                    <div class="form-group">
+                                        <label for="photoInput">Choose Photo</label>
+                                        <input type="file" id="photoInput" name="photo" accept="image/*" required>
+                                        <div class="photo-preview" id="photoPreview"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="photoCaption">Caption (optional)</label>
+                                        <textarea id="photoCaption" name="caption" rows="3" placeholder="Add a caption to your photo..."></textarea>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="cancel-btn">Cancel</button>
+                                        <button type="submit" class="save-btn">Upload Photo</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Sharing Page -->
+            <div id="video-page" class="page-content active" style="display: block;">
+                <div class="video-container">
+                    <!-- Video Upload Section -->
+                    <div class="video-upload-section">
+                        <div class="video-upload-header">
+                            <h2>Share Your Videos</h2>
+                            <button class="upload-video-btn" id="uploadVideoBtn">
+                                <i class="fas fa-upload"></i> Upload Video
+                            </button>
+                        </div>
+                        <div class="video-upload-form">
+                            <div class="form-group">
+                                <label for="videoInput">Choose Video</label>
+                                <input type="file" id="videoInput" name="video" accept="video/*" required>
+                                <div class="video-preview" id="videoPreview"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="videoTitle">Title</label>
+                                <input type="text" id="videoTitle" name="title" required placeholder="Enter video title">
+                            </div>
+                            <div class="form-group">
+                                <label for="videoDescription">Description</label>
+                                <textarea id="videoDescription" name="description" rows="3" placeholder="Describe your video..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="cancel-btn">Cancel</button>
+                                <button type="submit" class="save-btn">Upload Video</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Videos Section -->
+                    <div class="videos-section">
+                        <div class="videos-header">
+                            <h2>Videos</h2>
+                            <div class="video-filters">
+                                <button class="filter-btn active" data-filter="all">All Videos</button>
+                                <button class="filter-btn" data-filter="trending">Trending</button>
+                                <button class="filter-btn" data-filter="following">Following</button>
+                                <button class="filter-btn" data-filter="recent">Recent</button>
+                            </div>
+                        </div>
+                        <div class="videos-grid" id="videosGrid">
+                            <!-- Sample Video Items -->
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://via.placeholder.com/300x200" alt="Video Thumbnail">
+                                    <span class="video-duration">3:45</span>
+                                </div>
+                                <div class="video-info">
+                                    <h3 class="video-title">My First Video</h3>
+                                    <div class="video-meta">
+                                        <span>1.2K views</span>
+                                        <span>2 days ago</span>
+                                    </div>
+                                    <div class="video-actions">
+                                        <button class="like-btn"><i class="fas fa-heart"></i> <span>245</span></button>
+                                        <button class="share-btn"><i class="fas fa-share"></i> Share</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://via.placeholder.com/300x200" alt="Video Thumbnail">
+                                    <span class="video-duration">5:20</span>
+                                </div>
+                                <div class="video-info">
+                                    <h3 class="video-title">Another Great Video</h3>
+                                    <div class="video-meta">
+                                        <span>856 views</span>
+                                        <span>1 week ago</span>
+                                    </div>
+                                    <div class="video-actions">
+                                        <button class="like-btn"><i class="fas fa-heart"></i> <span>189</span></button>
+                                        <button class="share-btn"><i class="fas fa-share"></i> Share</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://via.placeholder.com/300x200" alt="Video Thumbnail">
+                                    <span class="video-duration">2:15</span>
+                                </div>
+                                <div class="video-info">
+                                    <h3 class="video-title">Quick Tutorial</h3>
+                                    <div class="video-meta">
+                                        <span>2.3K views</span>
+                                        <span>3 days ago</span>
+                                    </div>
+                                    <div class="video-actions">
+                                        <button class="like-btn"><i class="fas fa-heart"></i> <span>432</span></button>
+                                        <button class="share-btn"><i class="fas fa-share"></i> Share</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="right-sidebar">
+                <!-- Trending Topics -->
+                <div class="trending-section">
+                    <h3>Trending Topics</h3>
+                    <div class="trending-item">
+                        <span class="hashtag">#Welcome</span>
+                        <span class="tweet-count">0 posts</span>
+                    </div>
+                    <div class="trending-item">
+                        <span class="hashtag">#NewUser</span>
+                        <span class="tweet-count">0 posts</span>
+                    </div>
+                    <div class="trending-item">
+                        <span class="hashtag">#GetStarted</span>
+                        <span class="tweet-count">0 posts</span>
+                    </div>
+                </div>
+
+                <!-- Suggested Friends -->
+                <div class="suggested-friends">
+                    <h3>Suggested Friends</h3>
+                    <div class="friend-suggestion">
+                        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                        <div class="friend-info">
+                            <h4>Connect with others</h4>
+                            <p>Start following people to see their posts</p>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="regName">Full Name</label>
+                        <input type="text" id="regName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regUsername">Username</label>
+                        <input type="text" id="regUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regProfilePic">Profile Picture URL</label>
+                        <input type="url" id="regProfilePic" name="profilePic" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="public/js/script.js"></script>
+    <script src="public/js/emoji-picker.js"></script>
+    <script src="public/js/post.js"></script>
+    <script src="public/js/search.js"></script>
+    <script src="public/js/registration.js"></script>
+    <script src="public/js/video.js"></script>
+
+    <!-- Report Modal -->
+    <div id="reportModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Report Post</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label for="reportReason">Reason for Report</label>
+                        <select id="reportReason" name="reason" required>
+                            <option value="">Select a reason</option>
+                            <option value="inappropriate">Inappropriate Content</option>
+                            <option value="spam">Spam</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="hate">Hate Speech</option>
+                            <option value="violence">Violence</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reportDetails">Additional Details (optional)</label>
+                        <textarea id="reportDetails" name="details" rows="3" placeholder="Please provide any additional information that might help us understand the issue..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

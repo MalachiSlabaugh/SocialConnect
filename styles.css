@@ -1,0 +1,2120 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--bg-primary);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.nav-left h1 {
+    color: #1877f2;
+    font-size: 1.5rem;
+}
+
+.search-box {
+    background-color: #f0f2f5;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    margin-left: 0.5rem;
+    outline: none;
+    width: 100%;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-icons i {
+    font-size: 1.2rem;
+    color: #65676b;
+    cursor: pointer;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Main Container */
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 2rem;
+    padding: 5rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Main Content Area */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.page-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Page Styles */
+.profile-header {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.profile-cover {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    padding: 0 2rem;
+    margin-top: -50px;
+    position: relative;
+}
+
+.profile-picture-large {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-picture-large img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #1877f2;
+    color: #1877f2;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.profile-details {
+    margin-top: 1rem;
+}
+
+.profile-details h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.username {
+    color: #65676b;
+    margin-bottom: 0.5rem;
+}
+
+.bio {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #e4e6eb;
+    padding: 0 2rem;
+}
+
+.tab-btn {
+    padding: 1rem 2rem;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    color: #65676b;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #1877f2;
+    font-weight: bold;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #1877f2;
+}
+
+.profile-content {
+    padding: 2rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.about-section {
+    max-width: 600px;
+}
+
+.about-info {
+    margin-top: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #65676b;
+}
+
+.info-item i {
+    width: 24px;
+    text-align: center;
+}
+
+.friends-section,
+.photos-section {
+    text-align: center;
+    padding: 2rem;
+    color: #65676b;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    position: sticky;
+    top: 5rem;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e4e6eb;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.number {
+    font-weight: bold;
+    color: #1877f2;
+}
+
+.label {
+    color: #65676b;
+    font-size: 0.9rem;
+}
+
+.menu-items {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+    background-color: var(--hover-color);
+}
+
+.menu-item.active {
+    background-color: var(--active-color);
+    color: #1877f2;
+}
+
+.menu-item i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Main Feed */
+.main-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.create-post {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-post input {
+    flex: 1;
+    border: none;
+    background-color: #f0f2f5;
+    padding: 0.8rem;
+    border-radius: 20px;
+    outline: none;
+}
+
+.post-btn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-btn:hover {
+    background-color: #166fe5;
+}
+
+.post-btn:disabled {
+    background-color: #e4e6eb;
+    color: #65676b;
+    cursor: not-allowed;
+}
+
+/* Dark Mode Post Button Fixes */
+[data-theme="dark"] .post-btn {
+    background-color: #1877f2;
+    color: white;
+}
+
+[data-theme="dark"] .post-btn:hover {
+    background-color: #166fe5;
+}
+
+[data-theme="dark"] .post-btn:disabled {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.post {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-info h3 {
+    margin-bottom: 0.2rem;
+}
+
+.post-time {
+    color: #65676b;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    margin-bottom: 1rem;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #65676b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    position: sticky;
+    top: 5rem;
+    height: fit-content;
+}
+
+.trending-section, .suggested-friends {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trending-section h3, .suggested-friends h3 {
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+
+.trending-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e4e6eb;
+}
+
+.trending-item:last-child {
+    border-bottom: none;
+}
+
+.hashtag {
+    color: #1877f2;
+    font-weight: bold;
+}
+
+.tweet-count {
+    color: #65676b;
+    font-size: 0.9rem;
+}
+
+.friend-suggestion {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e4e6eb;
+}
+
+.friend-suggestion:last-child {
+    border-bottom: none;
+}
+
+.friend-info h4 {
+    margin-bottom: 0.2rem;
+}
+
+.friend-info p {
+    color: #65676b;
+    font-size: 0.9rem;
+}
+
+.follow-btn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+/* Notifications Page */
+.notifications-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e4e6eb;
+    margin-bottom: 1rem;
+}
+
+.notifications-header h2 {
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+
+.notification-filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    color: #65676b;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f0f2f5;
+}
+
+.filter-btn.active {
+    background-color: #1877f2;
+    color: white;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: #f0f2f5;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-content p {
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.notification-time {
+    font-size: 0.9rem;
+    color: #65676b;
+}
+
+/* Messages Page */
+.messages-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    height: calc(100vh - 60px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.messages-sidebar {
+    border-right: 1px solid #e4e6eb;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e4e6eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-message-btn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.messages-search {
+    padding: 1rem;
+    position: relative;
+}
+
+.messages-search input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border: 1px solid #e4e6eb;
+    border-radius: 20px;
+    background-color: #f0f2f5;
+}
+
+.messages-search i {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #65676b;
+}
+
+.conversations-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.conversation-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.conversation-item:hover {
+    background-color: var(--hover-color);
+}
+
+.conversation-item.active {
+    background-color: var(--active-color);
+}
+
+.conversation-info {
+    flex: 1;
+}
+
+.conversation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+
+.conversation-header h4 {
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.conversation-header .time {
+    font-size: 0.8rem;
+    color: #65676b;
+}
+
+.last-message {
+    margin: 0;
+    color: #65676b;
+    font-size: 0.9rem;
+}
+
+.chat-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e4e6eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chat-user-info h3 {
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.status {
+    color: #31a24c;
+    font-size: 0.9rem;
+}
+
+.chat-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.chat-actions i {
+    color: #65676b;
+    cursor: pointer;
+}
+
+.messages-list {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    max-width: 70%;
+}
+
+.message.received {
+    align-self: flex-start;
+}
+
+.message.sent {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-content {
+    background-color: var(--bg-secondary);
+    padding: 0.8rem;
+    border-radius: 20px;
+    position: relative;
+}
+
+.message.sent .message-content {
+    background-color: #1877f2;
+    color: white;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: #65676b;
+    margin-top: 0.2rem;
+    display: block;
+}
+
+.message.sent .message-time {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message-input {
+    padding: 1rem;
+    border-top: 1px solid #e4e6eb;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.message-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #e4e6eb;
+    border-radius: 20px;
+    background-color: #f0f2f5;
+}
+
+.message-input i {
+    color: #65676b;
+    cursor: pointer;
+}
+
+.send-btn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: 250px 1fr 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .left-sidebar, .right-sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        grid-column: 2 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+    
+    .search-box {
+        display: none;
+    }
+    
+    .container {
+        padding: 5rem 1rem 1rem;
+    }
+
+    .profile-info {
+        padding: 0 1rem;
+    }
+
+    .profile-tabs {
+        padding: 0 1rem;
+    }
+
+    .profile-content {
+        padding: 1rem;
+    }
+    
+    .left-sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        grid-column: 1 / -1;
+    }
+    
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-middle {
+        display: none;
+    }
+    
+    .nav-right {
+        margin-left: auto;
+    }
+}
+
+/* Theme Variables */
+:root {
+    /* Light Theme (default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f2f5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #65676b;
+    --border-color: #e4e6eb;
+    --hover-color: #f0f2f5;
+    --active-color: #e7f3ff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: #18191a;
+    --bg-secondary: #242526;
+    --text-primary: #e4e6eb;
+    --text-secondary: #b0b3b8;
+    --border-color: #3e4042;
+    --hover-color: #3a3b3c;
+    --active-color: #2d2d2d;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Update existing styles to use variables */
+body {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.navbar, .left-sidebar, .right-sidebar, .post, .create-post,
+.trending-section, .suggested-friends, .profile-header, .profile-content,
+.settings-container, .page-content {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.menu-item, .action-btn, .post-time, .post-content p,
+.conversation-header .time, .last-message, .message-time,
+.notification-time, .settings-info p {
+    color: var(--text-secondary);
+}
+
+/* Settings Page Styles */
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.settings-header {
+    margin-bottom: 2rem;
+}
+
+.settings-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.settings-section {
+    margin-bottom: 2rem;
+}
+
+.settings-section h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.settings-info h4 {
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.settings-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Theme Switch */
+.theme-switch {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.theme-btn.active {
+    background-color: var(--active-color);
+    color: #1877f2;
+}
+
+/* Settings Select */
+.settings-select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #1877f2;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Update existing hover effects */
+.menu-item:hover, .action-btn:hover, .conversation-item:hover {
+    background-color: var(--hover-color);
+}
+
+/* Update existing active states */
+.menu-item.active, .conversation-item.active {
+    background-color: var(--active-color);
+}
+
+/* Update existing shadows */
+.navbar, .left-sidebar, .right-sidebar, .post, .create-post,
+.trending-section, .suggested-friends, .profile-header, .profile-content,
+.settings-container {
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Update message bubbles */
+.message-content {
+    background-color: var(--bg-secondary);
+}
+
+.message.sent .message-content {
+    background-color: #1877f2;
+    color: white;
+}
+
+/* Update input fields */
+input, textarea, select {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Update scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Profile Page Dark Mode Fixes */
+.profile-tabs {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    color: var(--text-secondary);
+}
+
+.tab-btn.active {
+    color: #1877f2;
+}
+
+.tab-btn.active::after {
+    background-color: #1877f2;
+}
+
+/* Notifications Page Dark Mode Fixes */
+.notifications-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notifications-header h2 {
+    color: var(--text-primary);
+}
+
+.filter-btn {
+    color: var(--text-secondary);
+}
+
+.filter-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.filter-btn.active {
+    background-color: #1877f2;
+    color: white;
+}
+
+.notification-item {
+    background-color: var(--bg-primary);
+}
+
+.notification-item:hover {
+    background-color: var(--hover-color);
+}
+
+.notification-content p {
+    color: var(--text-primary);
+}
+
+/* Messages Page Dark Mode Fixes */
+.messages-container {
+    background-color: var(--bg-primary);
+}
+
+.messages-sidebar {
+    border-right: 1px solid var(--border-color);
+}
+
+.messages-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.messages-search input {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.conversation-header h4 {
+    color: var(--text-primary);
+}
+
+.conversation-header .time {
+    color: var(--text-secondary);
+}
+
+.last-message {
+    color: var(--text-secondary);
+}
+
+.chat-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chat-user-info h3 {
+    color: var(--text-primary);
+}
+
+.chat-actions i {
+    color: var(--text-secondary);
+}
+
+.message-input {
+    border-top: 1px solid var(--border-color);
+}
+
+.message-input input {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.message-input i {
+    color: var(--text-secondary);
+}
+
+/* Profile Card Dark Mode Fixes */
+.profile-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.profile-stats {
+    border-top: 1px solid var(--border-color);
+}
+
+.number {
+    color: #1877f2;
+}
+
+.label {
+    color: var(--text-secondary);
+}
+
+/* Menu Items Dark Mode Fixes */
+.menu-items {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.menu-item {
+    color: var(--text-primary);
+}
+
+.menu-item i {
+    color: var(--text-secondary);
+}
+
+.menu-item:hover {
+    background-color: var(--hover-color);
+}
+
+.menu-item.active {
+    background-color: var(--active-color);
+    color: #1877f2;
+}
+
+.menu-item.active i {
+    color: #1877f2;
+}
+
+/* Create Post Dark Mode Fixes */
+.create-post {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.create-post input {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.create-post input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Post Dark Mode Fixes */
+.post {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.post-info h3 {
+    color: var(--text-primary);
+}
+
+.post-actions {
+    border-top: 1px solid var(--border-color);
+}
+
+.action-btn {
+    color: var(--text-secondary);
+}
+
+.action-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Right Sidebar Dark Mode Fixes */
+.trending-section, .suggested-friends {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.trending-section h3, .suggested-friends h3 {
+    color: var(--text-primary);
+}
+
+.trending-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hashtag {
+    color: #1877f2;
+}
+
+.tweet-count {
+    color: var(--text-secondary);
+}
+
+.friend-info h4 {
+    color: var(--text-primary);
+}
+
+.friend-info p {
+    color: var(--text-secondary);
+}
+
+/* Profile Header Dark Mode Fixes */
+.profile-cover {
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-picture-large img {
+    border: 4px solid var(--bg-primary);
+}
+
+.profile-details h1 {
+    color: var(--text-primary);
+}
+
+.username {
+    color: var(--text-secondary);
+}
+
+.bio {
+    color: var(--text-primary);
+}
+
+/* About Section Dark Mode Fixes */
+.about-section h2 {
+    color: var(--text-primary);
+}
+
+.info-item {
+    color: var(--text-secondary);
+}
+
+/* Friends and Photos Sections Dark Mode Fixes */
+.friends-section h2,
+.photos-section h2 {
+    color: var(--text-primary);
+}
+
+.friends-section p,
+.photos-section p {
+    color: var(--text-secondary);
+}
+
+/* Search Box Dark Mode Fixes */
+.search-box {
+    background-color: var(--bg-secondary);
+}
+
+.search-box input {
+    color: var(--text-primary);
+}
+
+.search-box input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Nav Icons Dark Mode Fixes */
+.nav-icons i {
+    color: var(--text-secondary);
+}
+
+/* Profile Stats Dark Mode Fixes */
+.profile-stats {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Follow Button Dark Mode Fixes */
+.follow-btn {
+    background-color: #1877f2;
+    color: white;
+}
+
+.follow-btn:hover {
+    background-color: #166fe5;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--bg-primary);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cancel-btn {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.save-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #1877f2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+    background-color: #166fe5;
+}
+
+/* Edit Profile Button Styles */
+.edit-profile-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--bg-primary);
+    border: 1px solid #1877f2;
+    color: #1877f2;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.edit-profile-btn:hover {
+    background-color: #e7f3ff;
+}
+
+.edit-profile-btn i {
+    font-size: 0.9rem;
+}
+
+/* Dark Mode Modal Fixes */
+[data-theme="dark"] .modal-content {
+    background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .form-group input[type="text"],
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] .form-group input[type="file"] {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .cancel-btn {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .cancel-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Empty State Styles */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.empty-state h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Messages List Empty State */
+.messages-list .empty-state {
+    height: 100%;
+    min-height: 300px;
+}
+
+/* Conversations List Empty State */
+.conversations-list .empty-state {
+    height: 100%;
+    min-height: 200px;
+}
+
+/* Chat Header Empty State */
+.chat-header .chat-user-info h3 {
+    color: var(--text-primary);
+}
+
+.chat-header .chat-user-info .status {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* About Section Styles */
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.about-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.edit-about-btn {
+    background-color: var(--bg-primary);
+    border: 1px solid #1877f2;
+    color: #1877f2;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.edit-about-btn:hover {
+    background-color: #e7f3ff;
+}
+
+.edit-about-btn i {
+    font-size: 0.9rem;
+}
+
+/* Dark Mode About Section Fixes */
+[data-theme="dark"] .edit-about-btn {
+    background-color: var(--bg-primary);
+    border-color: #1877f2;
+}
+
+[data-theme="dark"] .edit-about-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Photos Section Styles */
+.photos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.photos-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.upload-photo-btn {
+    background-color: var(--bg-primary);
+    border: 1px solid #1877f2;
+    color: #1877f2;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.upload-photo-btn:hover {
+    background-color: #e7f3ff;
+}
+
+.upload-photo-btn i {
+    font-size: 0.9rem;
+}
+
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.photo-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.photo-item:hover .photo-caption {
+    opacity: 1;
+}
+
+.photo-preview {
+    margin-top: 1rem;
+    max-width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: none;
+}
+
+.photo-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Dark Mode Photos Section Fixes */
+[data-theme="dark"] .upload-photo-btn {
+    background-color: var(--bg-primary);
+    border-color: #1877f2;
+}
+
+[data-theme="dark"] .upload-photo-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.post-input-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.photo-upload-btn {
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.photo-upload-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.photo-upload-btn i {
+    font-size: 1.2rem;
+}
+
+.create-post .photo-preview {
+    margin-top: 0.5rem;
+    max-width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.create-post .photo-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Dark Mode Fixes */
+[data-theme="dark"] .photo-upload-btn {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .photo-upload-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Emoji Picker Styles */
+.emoji-picker {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    z-index: 1000;
+    margin-bottom: 10px;
+}
+
+.emoji-picker.show {
+    display: block;
+}
+
+.emoji-header {
+    padding: 10px;
+    border-bottom: 1px solid #e4e6eb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.emoji-header input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #e4e6eb;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.emoji-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #65676b;
+}
+
+.emoji-categories {
+    display: flex;
+    padding: 8px;
+    gap: 5px;
+    border-bottom: 1px solid #e4e6eb;
+    overflow-x: auto;
+}
+
+.emoji-category-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.emoji-category-btn.active {
+    background: #e4e6eb;
+}
+
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.emoji-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    transition: background-color 0.2s;
+}
+
+.emoji-button:hover {
+    background: #e4e6eb;
+}
+
+/* Position the emoji picker relative to the input */
+.create-post {
+    position: relative;
+}
+
+/* Dark Mode Emoji Picker Fixes */
+[data-theme="dark"] .emoji-picker {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .emoji-categories {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .emoji-category {
+    color: var(--text-primary);
+}
+
+/* Hide navigation icons */
+.nav-right {
+    display: none;
+}
+
+/* Adjust search box width since we removed the nav-right */
+.nav-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Search Results Styles */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    border: 1px solid var(--border-color);
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: var(--hover-color);
+}
+
+.search-result-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.search-result-info {
+    flex: 1;
+}
+
+.search-result-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.search-result-username {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Dark Mode Search Results Fixes */
+[data-theme="dark"] .search-results {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .search-result-item:hover {
+    background-color: var(--hover-color);
+}
+
+/* Search Results Page Styles */
+.search-results-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-header {
+    margin-bottom: 20px;
+}
+
+.search-header h2 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.search-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-filters .filter-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-filters .filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-result-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.search-result-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.search-result-info {
+    flex: 1;
+}
+
+.search-result-name {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.search-result-username {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.search-result-post {
+    padding: 15px;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-result-post:hover {
+    background-color: var(--bg-hover);
+}
+
+.search-result-post .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-result-post .post-content {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.search-result-post .post-time {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Dark mode fixes */
+[data-theme="dark"] .search-filters .filter-btn {
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .search-result-item,
+[data-theme="dark"] .search-result-post {
+    background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-result-item:hover,
+[data-theme="dark"] .search-result-post:hover {
+    background-color: var(--bg-hover);
+} 
