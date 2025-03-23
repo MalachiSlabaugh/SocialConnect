@@ -317,8 +317,9 @@ function updateProfileInfo() {
 
 // Function to initialize theme
 function initializeTheme() {
+    // Set default theme if none exists
     const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    applyTheme(savedTheme);
     
     const themeButtons = document.querySelectorAll('.theme-btn');
     themeButtons.forEach(btn => {
@@ -330,13 +331,28 @@ function initializeTheme() {
     });
 }
 
+// New function to apply theme
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Apply specific theme classes
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+    } else {
+        document.body.classList.add('light-theme');
+        document.body.classList.remove('dark-theme');
+    }
+}
+
 // Theme switching functionality
 document.querySelectorAll('.theme-btn').forEach(button => {
     button.addEventListener('click', () => {
         const theme = button.getAttribute('data-theme');
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+        applyTheme(theme);
         
+        // Update active state of theme buttons
         document.querySelectorAll('.theme-btn').forEach(btn => {
             btn.classList.toggle('active', btn === button);
         });
