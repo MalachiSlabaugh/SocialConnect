@@ -317,49 +317,41 @@ function updateProfileInfo() {
 
 // Function to initialize theme
 function initializeTheme() {
-    // Set default theme if none exists
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
     
+    // Add event listeners to theme buttons
     const themeButtons = document.querySelectorAll('.theme-btn');
+    console.log('Found theme buttons:', themeButtons.length); // Debug log
+    
     themeButtons.forEach(btn => {
-        if (btn.getAttribute('data-theme') === savedTheme) {
+        btn.addEventListener('click', function() {
+            console.log('Theme button clicked:', this.dataset.theme); // Debug log
+            const theme = this.dataset.theme;
+            applyTheme(theme);
+            
+            // Update active states
+            themeButtons.forEach(button => button.classList.remove('active'));
+            this.classList.add('active');
+        });
+        
+        // Set initial active state
+        if (btn.dataset.theme === savedTheme) {
             btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
         }
     });
 }
 
-// New function to apply theme
+// Function to apply theme
 function applyTheme(theme) {
+    console.log('Applying theme:', theme); // Debug log
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     
-    // Apply specific theme classes
-    if (theme === 'dark') {
-        document.body.classList.add('dark-theme');
-        document.body.classList.remove('light-theme');
-    } else {
-        document.body.classList.add('light-theme');
-        document.body.classList.remove('dark-theme');
-    }
+    // Apply theme classes
+    document.body.classList.remove('light-theme', 'dark-theme');
+    document.body.classList.add(`${theme}-theme`);
 }
-
-// Theme switching functionality
-document.querySelectorAll('.theme-btn').forEach(button => {
-    console.log('Theme button found:', button);
-    button.addEventListener('click', () => {
-        const theme = button.getAttribute('data-theme');
-        console.log('Theme switched to:', theme);
-        applyTheme(theme);
-        
-        // Update active state of theme buttons
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.classList.toggle('active', btn === button);
-        });
-    });
-});
 
 // Function to initialize notification filters
 function initializeNotificationFilters() {
@@ -708,4 +700,50 @@ function initializeMessageFunctionality() {
     // Load conversations and initialize messages
     loadConversations();
     attachConversationListeners();
+}
+
+/* Theme-specific styles */
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #1a73e8;
+    --secondary-bg: #f5f5f5;
+    --border-color: #e0e0e0;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --primary-color: #4a9eff;
+    --secondary-bg: #2d2d2d;
+    --border-color: #404040;
+}
+
+/* Theme button styles */
+.theme-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Apply theme variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 } 
