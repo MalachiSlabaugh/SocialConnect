@@ -7,13 +7,14 @@
 }
 
 body {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Navigation Bar */
 .navbar {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     padding: 0.8rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -369,8 +370,8 @@ body {
 }
 
 [data-theme="dark"] .post-btn:disabled {
-    background-color: var(--bg-secondary);
-    color: var(--text-secondary);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .post {
@@ -746,7 +747,7 @@ body {
 }
 
 .message-content {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     padding: 0.8rem;
     border-radius: 20px;
     position: relative;
@@ -871,46 +872,47 @@ body {
 
 /* Theme Variables */
 :root {
-    /* Light Theme (default) */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f0f2f5;
-    --text-primary: #1a1a1a;
-    --text-secondary: #65676b;
-    --border-color: #e4e6eb;
-    --hover-color: #f0f2f5;
-    --active-color: #e7f3ff;
+    /* Light theme (default) */
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #1a73e8;
+    --secondary-color: #f1f1f1;
+    --border-color: #e0e0e0;
+    --hover-color: #f5f5f5;
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Theme */
-[data-theme="dark"] {
-    --bg-primary: #18191a;
-    --bg-secondary: #242526;
-    --text-primary: #e4e6eb;
-    --text-secondary: #b0b3b8;
-    --border-color: #3e4042;
-    --hover-color: #3a3b3c;
-    --active-color: #2d2d2d;
+/* Dark theme */
+:root[data-theme="dark"] {
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    --primary-color: #4a9eff;
+    --secondary-color: #2d2d2d;
+    --border-color: #404040;
+    --hover-color: #2a2a2a;
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Update existing styles to use variables */
+/* Apply theme variables */
 body {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar, .left-sidebar, .right-sidebar, .post, .create-post,
-.trending-section, .suggested-friends, .profile-header, .profile-content,
-.settings-container, .page-content {
-    background-color: var(--bg-primary);
+/* Add these classes to any elements that need theme-specific styling */
+.card, .sidebar, .header {
+    background-color: var(--background-color);
     border-color: var(--border-color);
 }
 
-.menu-item, .action-btn, .post-time, .post-content p,
-.conversation-header .time, .last-message, .message-time,
-.notification-time, .settings-info p {
-    color: var(--text-secondary);
+.button, .menu-item {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.button:hover, .menu-item:hover {
+    background-color: var(--hover-color);
 }
 
 /* Settings Page Styles */
@@ -925,7 +927,7 @@ body {
 }
 
 .settings-header h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
     margin: 0;
 }
 
@@ -934,7 +936,7 @@ body {
 }
 
 .settings-section h3 {
-    color: var(--text-primary);
+    color: var(--text-color);
     margin-bottom: 1rem;
 }
 
@@ -947,7 +949,7 @@ body {
 }
 
 .settings-info h4 {
-    color: var(--text-primary);
+    color: var(--text-color);
     margin: 0 0 0.5rem 0;
 }
 
@@ -972,7 +974,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--text-color);
     transition: all 0.2s ease;
 }
 
@@ -981,8 +983,8 @@ body {
 }
 
 .theme-btn.active {
-    background-color: var(--active-color);
-    color: #1877f2;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 /* Settings Select */
@@ -990,8 +992,8 @@ body {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid var(--border-color);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 /* Toggle Switch */
@@ -1059,7 +1061,7 @@ input:checked + .slider:before {
 
 /* Update message bubbles */
 .message-content {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
 }
 
 .message.sent .message-content {
@@ -1069,13 +1071,13 @@ input:checked + .slider:before {
 
 /* Update input fields */
 input, textarea, select {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-color: var(--border-color);
 }
 
 input::placeholder {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Update scrollbars */
@@ -1084,7 +1086,7 @@ input::placeholder {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
+    background: var(--background-color);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1093,7 +1095,7 @@ input::placeholder {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-secondary);
+    background: var(--text-color);
 }
 
 /* Profile Page Dark Mode Fixes */
@@ -1102,7 +1104,7 @@ input::placeholder {
 }
 
 .tab-btn {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .tab-btn.active {
@@ -1119,11 +1121,11 @@ input::placeholder {
 }
 
 .notifications-header h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .filter-btn {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .filter-btn:hover {
@@ -1136,7 +1138,7 @@ input::placeholder {
 }
 
 .notification-item {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
 }
 
 .notification-item:hover {
@@ -1144,12 +1146,12 @@ input::placeholder {
 }
 
 .notification-content p {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 /* Messages Page Dark Mode Fixes */
 .messages-container {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
 }
 
 .messages-sidebar {
@@ -1161,21 +1163,21 @@ input::placeholder {
 }
 
 .messages-search input {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     border-color: var(--border-color);
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .conversation-header h4 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .conversation-header .time {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .last-message {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .chat-header {
@@ -1183,11 +1185,11 @@ input::placeholder {
 }
 
 .chat-user-info h3 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .chat-actions i {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .message-input {
@@ -1195,18 +1197,18 @@ input::placeholder {
 }
 
 .message-input input {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     border-color: var(--border-color);
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .message-input i {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Profile Card Dark Mode Fixes */
 .profile-card {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
 }
 
@@ -1219,21 +1221,21 @@ input::placeholder {
 }
 
 .label {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Menu Items Dark Mode Fixes */
 .menu-items {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
 }
 
 .menu-item {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .menu-item i {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .menu-item:hover {
@@ -1251,27 +1253,27 @@ input::placeholder {
 
 /* Create Post Dark Mode Fixes */
 .create-post {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
 }
 
 .create-post input {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .create-post input::placeholder {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Post Dark Mode Fixes */
 .post {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
 }
 
 .post-info h3 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .post-actions {
@@ -1279,7 +1281,7 @@ input::placeholder {
 }
 
 .action-btn {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .action-btn:hover {
@@ -1288,12 +1290,12 @@ input::placeholder {
 
 /* Right Sidebar Dark Mode Fixes */
 .trending-section, .suggested-friends {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid var(--border-color);
 }
 
 .trending-section h3, .suggested-friends h3 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .trending-item {
@@ -1305,15 +1307,15 @@ input::placeholder {
 }
 
 .tweet-count {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .friend-info h4 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .friend-info p {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Profile Header Dark Mode Fixes */
@@ -1322,57 +1324,57 @@ input::placeholder {
 }
 
 .profile-picture-large img {
-    border: 4px solid var(--bg-primary);
+    border: 4px solid var(--background-color);
 }
 
 .profile-details h1 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .username {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .bio {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 /* About Section Dark Mode Fixes */
 .about-section h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .info-item {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Friends and Photos Sections Dark Mode Fixes */
 .friends-section h2,
 .photos-section h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .friends-section p,
 .photos-section p {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Search Box Dark Mode Fixes */
 .search-box {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
 }
 
 .search-box input {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .search-box input::placeholder {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Nav Icons Dark Mode Fixes */
 .nav-icons i {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 /* Profile Stats Dark Mode Fixes */
@@ -1405,7 +1407,7 @@ input::placeholder {
 }
 
 .modal-content {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
@@ -1424,7 +1426,7 @@ input::placeholder {
 }
 
 .modal-header h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
     margin: 0;
 }
 
@@ -1432,7 +1434,7 @@ input::placeholder {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--text-secondary);
+    color: var(--text-color);
     cursor: pointer;
     padding: 0.5rem;
     line-height: 1;
@@ -1449,7 +1451,7 @@ input::placeholder {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .form-group input[type="text"],
@@ -1458,8 +1460,8 @@ input::placeholder {
     padding: 0.8rem;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .form-group input[type="file"] {
@@ -1467,8 +1469,8 @@ input::placeholder {
     padding: 0.5rem;
     border: 1px dashed var(--border-color);
     border-radius: 5px;
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .form-actions {
@@ -1482,8 +1484,8 @@ input::placeholder {
     padding: 0.8rem 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -1511,7 +1513,7 @@ input::placeholder {
     position: absolute;
     bottom: 0;
     right: 0;
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid #1877f2;
     color: #1877f2;
     padding: 0.5rem 1rem;
@@ -1534,20 +1536,20 @@ input::placeholder {
 
 /* Dark Mode Modal Fixes */
 [data-theme="dark"] .modal-content {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
 }
 
 [data-theme="dark"] .form-group input[type="text"],
 [data-theme="dark"] .form-group textarea,
 [data-theme="dark"] .form-group input[type="file"] {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-color: var(--border-color);
 }
 
 [data-theme="dark"] .cancel-btn {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-color: var(--border-color);
 }
 
@@ -1563,19 +1565,19 @@ input::placeholder {
     justify-content: center;
     padding: 2rem;
     text-align: center;
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .empty-state i {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 .empty-state h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .empty-state p {
@@ -1597,11 +1599,11 @@ input::placeholder {
 
 /* Chat Header Empty State */
 .chat-header .chat-user-info h3 {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .chat-header .chat-user-info .status {
-    color: var(--text-secondary);
+    color: var(--text-color);
     font-size: 0.9rem;
 }
 
@@ -1614,12 +1616,12 @@ input::placeholder {
 }
 
 .about-header h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
     margin: 0;
 }
 
 .edit-about-btn {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid #1877f2;
     color: #1877f2;
     padding: 0.5rem 1rem;
@@ -1642,7 +1644,7 @@ input::placeholder {
 
 /* Dark Mode About Section Fixes */
 [data-theme="dark"] .edit-about-btn {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border-color: #1877f2;
 }
 
@@ -1659,12 +1661,12 @@ input::placeholder {
 }
 
 .photos-header h2 {
-    color: var(--text-primary);
+    color: var(--text-color);
     margin: 0;
 }
 
 .upload-photo-btn {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border: 1px solid #1877f2;
     color: #1877f2;
     padding: 0.5rem 1rem;
@@ -1745,7 +1747,7 @@ input::placeholder {
 
 /* Dark Mode Photos Section Fixes */
 [data-theme="dark"] .upload-photo-btn {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border-color: #1877f2;
 }
 
@@ -1768,7 +1770,7 @@ input::placeholder {
 }
 
 .photo-upload-btn {
-    color: var(--text-secondary);
+    color: var(--text-color);
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 50%;
@@ -1804,7 +1806,7 @@ input::placeholder {
 
 /* Dark Mode Fixes */
 [data-theme="dark"] .photo-upload-btn {
-    color: var(--text-secondary);
+    color: var(--text-color);
 }
 
 [data-theme="dark"] .photo-upload-btn:hover {
@@ -1904,17 +1906,17 @@ input::placeholder {
 
 /* Dark Mode Emoji Picker Fixes */
 [data-theme="dark"] .emoji-picker {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border-color: var(--border-color);
 }
 
 [data-theme="dark"] .emoji-categories {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     border-color: var(--border-color);
 }
 
 [data-theme="dark"] .emoji-category {
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 /* Hide navigation icons */
@@ -1942,7 +1944,7 @@ input::placeholder {
     transform: translateX(-50%);
     width: 100%;
     max-width: 500px;
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-top: 8px;
@@ -1977,18 +1979,18 @@ input::placeholder {
 
 .search-result-name {
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--text-color);
     margin-bottom: 2px;
 }
 
 .search-result-username {
-    color: var(--text-secondary);
+    color: var(--text-color);
     font-size: 0.9rem;
 }
 
 /* Dark Mode Search Results Fixes */
 [data-theme="dark"] .search-results {
-    background-color: var(--bg-primary);
+    background-color: var(--background-color);
     border-color: var(--border-color);
 }
 
@@ -2022,7 +2024,7 @@ input::placeholder {
     padding: 8px 16px;
     border: none;
     border-radius: 20px;
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     color: var(--text-color);
     cursor: pointer;
     transition: background-color 0.3s;
@@ -2043,14 +2045,14 @@ input::placeholder {
     display: flex;
     align-items: center;
     padding: 15px;
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .search-result-item:hover {
-    background-color: var(--bg-hover);
+    background-color: var(--hover-color);
 }
 
 .search-result-item img {
@@ -2071,20 +2073,20 @@ input::placeholder {
 }
 
 .search-result-username {
-    color: var(--text-secondary);
+    color: var(--text-color);
     font-size: 0.9em;
 }
 
 .search-result-post {
     padding: 15px;
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .search-result-post:hover {
-    background-color: var(--bg-hover);
+    background-color: var(--hover-color);
 }
 
 .search-result-post .post-header {
@@ -2099,22 +2101,22 @@ input::placeholder {
 }
 
 .search-result-post .post-time {
-    color: var(--text-secondary);
+    color: var(--text-color);
     font-size: 0.9em;
 }
 
 /* Dark mode fixes */
 [data-theme="dark"] .search-filters .filter-btn {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
     color: var(--text-color);
 }
 
 [data-theme="dark"] .search-result-item,
 [data-theme="dark"] .search-result-post {
-    background-color: var(--bg-secondary);
+    background-color: var(--background-color);
 }
 
 [data-theme="dark"] .search-result-item:hover,
 [data-theme="dark"] .search-result-post:hover {
-    background-color: var(--bg-hover);
+    background-color: var(--hover-color);
 } 
