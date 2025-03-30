@@ -273,6 +273,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize message functionality
     initializeMessageFunctionality();
+
+    // Re-initialize theme when settings page is shown
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', () => {
+            if (item.getAttribute('data-page') === 'settings') {
+                setTimeout(initializeTheme, 100); // Small delay to ensure DOM is updated
+            }
+        });
+    });
 });
 
 // Function to initialize current user
@@ -315,42 +324,96 @@ function updateProfileInfo() {
     }
 }
 
-// Function to initialize theme
+// Enhanced theme initialization and switching
 function initializeTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
     
     // Add event listeners to theme buttons
     const themeButtons = document.querySelectorAll('.theme-btn');
-    console.log('Found theme buttons:', themeButtons.length); // Debug log
+    console.log('Theme buttons initialized:', themeButtons.length);
     
     themeButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            console.log('Theme button clicked:', this.dataset.theme); // Debug log
-            const theme = this.dataset.theme;
-            applyTheme(theme);
-            
-            // Update active states
-            themeButtons.forEach(button => button.classList.remove('active'));
-            this.classList.add('active');
-        });
+        // Remove any existing listeners first to prevent duplicates
+        btn.removeEventListener('click', handleThemeSwitch);
+        btn.addEventListener('click', handleThemeSwitch);
         
         // Set initial active state
         if (btn.dataset.theme === savedTheme) {
             btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
         }
     });
 }
 
-// Function to apply theme
-function applyTheme(theme) {
-    console.log('Applying theme:', theme); // Debug log
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+// Separate handler function for theme switching
+function handleThemeSwitch(event) {
+    const theme = event.target.dataset.theme;
+    console.log('Switching theme to:', theme);
     
-    // Apply theme classes
+    if (!theme) {
+        console.error('No theme specified in button data-theme attribute');
+        return;
+    }
+    
+    applyTheme(theme);
+    
+    // Update active states
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn === event.target);
+    });
+}
+
+// Enhanced theme application
+function applyTheme(theme) {
+    if (!['light', 'dark'].includes(theme)) {
+        console.error('Invalid theme:', theme);
+        theme = 'light'; // Fallback to light theme
+    }
+    
+    console.log('Applying theme:', theme);
+    
+    // Apply theme to root element
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Apply theme classes to body
     document.body.classList.remove('light-theme', 'dark-theme');
     document.body.classList.add(`${theme}-theme`);
+    
+    // Store theme preference
+    try {
+        localStorage.setItem('theme', theme);
+    } catch (error) {
+        console.error('Failed to save theme preference:', error);
+    }
+    
+    // Dispatch custom event for other components
+    document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+}
+
+// Listen for theme changes to update UI components
+document.addEventListener('themeChanged', (event) => {
+    const theme = event.detail.theme;
+    
+    // Update any theme-dependent UI components
+    updateUIForTheme(theme);
+});
+
+// Function to update UI components based on theme
+function updateUIForTheme(theme) {
+    // Update specific UI elements that need theme-specific adjustments
+    const isDark = theme === 'dark';
+    
+    // Update icons or images that need to change with theme
+    document.querySelectorAll('.theme-sensitive-icon').forEach(icon => {
+        icon.classList.toggle('dark-mode', isDark);
+    });
+    
+    // Update any theme-sensitive backgrounds
+    document.querySelectorAll('.theme-sensitive-bg').forEach(element => {
+        element.classList.toggle('dark-bg', isDark);
+    });
 }
 
 // Function to initialize notification filters
@@ -746,4 +809,55 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Smooth theme transitions */
+* {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+/* Theme-sensitive elements */
+.theme-sensitive-icon {
+    opacity: 0.87;
+}
+
+.theme-sensitive-icon.dark-mode {
+    opacity: 1;
+    filter: brightness(1.2);
+}
+
+.theme-sensitive-bg {
+    background-color: var(--bg-color);
+}
+
+.theme-sensitive-bg.dark-bg {
+    background-color: var(--secondary-bg);
+}
+
+/* Ensure theme buttons are visible in both themes */
+.theme-btn {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+}
+
+.theme-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.theme-btn:hover::before,
+.theme-btn.active::before {
+    opacity: 0.1;
 } 
