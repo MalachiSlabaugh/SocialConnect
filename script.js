@@ -348,8 +348,10 @@ function applyTheme(theme) {
 
 // Theme switching functionality
 document.querySelectorAll('.theme-btn').forEach(button => {
+    console.log('Theme button found:', button);
     button.addEventListener('click', () => {
         const theme = button.getAttribute('data-theme');
+        console.log('Theme switched to:', theme);
         applyTheme(theme);
         
         // Update active state of theme buttons
